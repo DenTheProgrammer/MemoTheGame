@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.card{
+    width: 180px;
+    background: orange;
+    height: 180px;
+    margin: 20px;
+}
