@@ -1,12 +1,52 @@
-.container{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    
+    perspective: 1700px;
 }
-.card{
+
+.card {
     width: 180px;
-    background: orange;
     height: 180px;
     margin: 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.cardFront,
+.cardBack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+
+.cardFront {
+    background: lightblue;
+}
+
+.cardBack {
+    background: yellow;
+    transform: rotateY(180deg);
+}
+
+.card:hover .cardFront {
+    transform: rotateY(180deg);
+}
+
+.card:hover .cardBack {
+    transform: rotateY(360deg);
 }
