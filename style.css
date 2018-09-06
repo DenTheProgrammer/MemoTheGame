@@ -18,6 +18,7 @@
     margin: 20px;
     position: relative;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .cardFront,
@@ -44,11 +45,11 @@
     transform: rotateY(180deg);
 }
 
-.card:hover .cardFront {
+.flip .cardFront{
     transform: rotateY(180deg);
 }
-
-.card:hover .cardBack {
+/**/
+.flip .cardBack{
     transform: rotateY(360deg);
 }
 .cardFront p{
