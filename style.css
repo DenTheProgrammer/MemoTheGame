@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 .container {
@@ -35,7 +36,7 @@
 }
 
 .cardFront {
-    background: lightblue;
+    background: orange;
 }
 
 .cardBack {
@@ -49,4 +50,10 @@
 
 .card:hover .cardBack {
     transform: rotateY(360deg);
+}
+.cardFront p{
+    text-transform: uppercase;
+    font-size: 50px;
+    color: blue;
+    transform: rotate(45deg);
 }
