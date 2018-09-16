@@ -1,8 +1,8 @@
 var game = {
     attempts: 0,
-    cards: 4,
+    cards: 10,
     flipped: [],
-    assosiatedCards: [2, 3, 0, 1],
+    assosiatedCards: [],
 }
 
 function cardAppend() {
@@ -22,10 +22,27 @@ function cardAppend() {
     }
 }
 
-function unflip() {
-    document.querySelector(".cardFront" + game.flipped[0]).parentNode.classList.toggle("flip");
-    document.querySelector(".cardFront" + game.flipped[1]).parentNode.classList.toggle("flip");
-    game.flipped = [];
+function assosiateCards() {
+
+    for (var i = 0; i < game.cards; i++) {
+
+        var newNumber = Math.floor(Math.random() * game.cards);
+
+        function isRepeated() {
+            for (var j = i - 1; j > -1; j--) {
+                if (newNumber == game.assosiatedCards[j]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        if ((newNumber !== i) && (i==0 || !(isRepeated()))) {
+            game.assosiatedCards[i] = newNumber;
+        } else {
+            i--;
+        }
+    }
 }
 
 document.querySelector(".gameContainer").addEventListener("click", function (e) {
@@ -38,15 +55,14 @@ document.querySelector(".gameContainer").addEventListener("click", function (e) 
                 console.log("совпадение");
                 game.flipped = [];
             } else {
-                setTimeout(unflip, 2000);
+                setTimeout(function () {
+                    document.querySelector(".cardFront" + game.flipped[0]).parentNode.classList.toggle("flip");
+                    document.querySelector(".cardFront" + game.flipped[1]).parentNode.classList.toggle("flip");
+                    game.flipped = [];
+                }, 1500);
             }
-
-
-
         }
     }
-
-
 })
 
 
@@ -54,3 +70,4 @@ document.querySelector(".gameContainer").addEventListener("click", function (e) 
 
 
 cardAppend();
+assosiateCards();
