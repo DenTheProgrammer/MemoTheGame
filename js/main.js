@@ -20,7 +20,14 @@ function cardAppend() {
     }
 }
 
+document.querySelector(".gameContainer").addEventListener("click", function (e) {
+    if (e.target.classList[0] === "cardFront"){
+        e.target.parentNode.classList.toggle("flip");
+        game.attempts++;
+    }
 
+      
+})
 
 
 
