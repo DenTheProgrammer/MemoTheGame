@@ -2,7 +2,7 @@ var game = {
 	attempts: 0,
 	cards: 10,
 	flipped: [],
-	solved:0,
+	solved: 0,
 	assosiatedCards: [],
 }
 
@@ -15,6 +15,7 @@ function cardAppend() {
 		var cardBack = document.createElement("div");
 		card.classList.add("card");
 		cardBack.classList.add("cardBack");
+		cardBack.classList.add("cardBack" + i); //индекс карточки
 		cardFront.classList.add("cardFront");
 		cardFront.classList.add("cardFront" + i); //индекс карточки
 		card.appendChild(cardBack);
@@ -32,7 +33,7 @@ function assosiateCards() {
 			if ((newNumber !== i) && (game.assosiatedCards.indexOf(newNumber) === -1)) {
 				game.assosiatedCards[i] = newNumber;
 				game.assosiatedCards[newNumber] = i;
-			}else{
+			} else {
 				i--;
 			}
 		} else {
@@ -50,11 +51,11 @@ document.querySelector(".gameContainer").addEventListener("click", function (e) 
 			if (game.assosiatedCards[game.flipped[0]] === game.flipped[1]) {
 				console.log("совпадение");
 				game.flipped = [];
-				game.solved+=2;
-				if(game.solved===game.cards){
+				game.solved += 2;
+				if (game.solved === game.cards) {
 					alert("Победа!");
 				}
-				
+
 			} else {
 				setTimeout(function () {
 					document.querySelector(".cardFront" + game.flipped[0]).parentNode.classList.toggle("flip");
@@ -67,8 +68,34 @@ document.querySelector(".gameContainer").addEventListener("click", function (e) 
 })
 
 
+function setImages() {
+	var randomImages = [];
+	var doneImages = [];
+	for (var i = 0; i < game.cards / 2; i++) {
+		var imgIndex = Math.floor(Math.random() * 31); //N+1 где n-колво картинок
+		if (randomImages.indexOf(imgIndex) === -1) {
+			randomImages.push(imgIndex);
+		} else {
+			i--;
+		}
+	}
+//	console.log(randomImages);
+	var img = 0;
+	for (i = 0; i < game.cards; i++) {
 
+		if (doneImages.indexOf(game.assosiatedCards[i]) === -1) {
+			doneImages.push(game.assosiatedCards[i]);
+			doneImages.push(game.assosiatedCards[game.assosiatedCards[i]]);
+			document.querySelector(".cardBack" + game.assosiatedCards[i]).style.backgroundImage = "url(../img/" + randomImages[img] + ".svg)";
+			document.querySelector(".cardBack" + game.assosiatedCards[game.assosiatedCards[i]]).style.backgroundImage = "url(../img/" + randomImages[img] + ".svg)";
+			img++;
+
+		}
+	}
+}
 
 
 cardAppend();
 assosiateCards();
+setImages();
+console.log(game.assosiatedCards);
