@@ -1,6 +1,6 @@
 var game = {
 	attempts: 0,
-	cards: 10,
+	cards: 20,
 	flipped: [],
 	solved: 0,
 	assosiatedCards: [],
@@ -46,14 +46,14 @@ document.querySelector(".gameContainer").addEventListener("click", function (e) 
 	if (e.target.classList[0] === "cardFront") {
 		e.target.parentNode.classList.toggle("flip");
 		game.attempts++;
-		game.flipped.push(+e.target.classList[1][9]);
-		if (game.flipped.length === 2) {
+		game.flipped.push(parseInt(e.target.classList[1].replace(/\D+/g, "")));
+		if (game.flipped.length > 1) {
 			if (game.assosiatedCards[game.flipped[0]] === game.flipped[1]) {
 				console.log("совпадение");
 				game.flipped = [];
 				game.solved += 2;
 				if (game.solved === game.cards) {
-					alert("Победа!");
+					alert("Победа! Количество попыток: " + game.attempts);
 				}
 
 			} else {
@@ -65,6 +65,7 @@ document.querySelector(".gameContainer").addEventListener("click", function (e) 
 			}
 		}
 	}
+	console.log(game.flipped);
 })
 
 
@@ -79,7 +80,7 @@ function setImages() {
 			i--;
 		}
 	}
-//	console.log(randomImages);
+	//	console.log(randomImages);
 	var img = 0;
 	for (i = 0; i < game.cards; i++) {
 

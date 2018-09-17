@@ -10,6 +10,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     perspective: 1700px;
+	background: lightblue;
 }
 
 .card {
@@ -41,7 +42,7 @@
 }
 
 .cardBack {
-    background: yellow;
+    background: #4e58a2;
     transform: rotateY(180deg);
 }
 
