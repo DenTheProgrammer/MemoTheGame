@@ -72,7 +72,7 @@ function setImages() {
 	var randomImages = [];
 	var doneImages = [];
 	for (var i = 0; i < game.cards / 2; i++) {
-		var imgIndex = Math.floor(Math.random() * 31); //N+1 где n-колво картинок
+		var imgIndex = Math.floor(Math.random() * 230); //N+1 где n-колво картинок
 		if (randomImages.indexOf(imgIndex) === -1) {
 			randomImages.push(imgIndex);
 		} else {
