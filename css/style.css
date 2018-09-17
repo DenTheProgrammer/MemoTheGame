@@ -1,61 +1,91 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+.container {
+	background: lightblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
 
 .gameContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    perspective: 1700px;
-	background: lightblue;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	perspective: 1700px;
+	max-width: 1500px;
 }
 
 .card {
-    width: 180px;
-    height: 180px;
-    margin: 20px;
-    position: relative;
-    border-radius: 10px;
-    cursor: pointer;
+	width: 180px;
+	height: 180px;
+	margin: 20px;
+	position: relative;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 .cardFront,
 .cardBack {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: inherit;
-    height: inherit;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 1s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: inherit;
+	height: inherit;
+	backface-visibility: hidden;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 1s;
 }
 
 .cardFront {
-    background: orange;
+	background: orange;
 }
 
 .cardBack {
-    background: #4e58a2;
-    transform: rotateY(180deg);
+	background: #4e58a2;
+	transform: rotateY(180deg);
 }
 
-.flip .cardFront{
-    transform: rotateY(180deg);
+.flip .cardFront {
+	transform: rotateY(180deg);
 }
+
 /**/
-.flip .cardBack{
-    transform: rotateY(360deg);
+.flip .cardBack {
+	transform: rotateY(360deg);
 }
-.cardFront p{
-    text-transform: uppercase;
-    font-size: 50px;
-    color: blue;
-    transform: rotate(45deg);
+
+.cardFront p {
+	text-transform: uppercase;
+	font-size: 50px;
+	color: blue;
+	transform: rotate(45deg);
+}
+
+@keyframes solved {
+	from {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
+
+.solved {
+
+	animation: solved 1s;
+
 }
